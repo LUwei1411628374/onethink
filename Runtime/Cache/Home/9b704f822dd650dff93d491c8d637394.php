@@ -74,8 +74,8 @@
 	
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h2>用户登录</h2>
-    <p><span><span class="pull-left"><span>还没有账号? <a href="<?php echo U('User/register');?>">立即注册</a></span> </span></p>
+    <h2>用户注册</h2>
+    <p><span><span class="pull-left"><span>已经有账号? <a href="<?php echo U('User/login');?>">点此登录</a> </span> </span></p>
   </div>
 </header>
 
@@ -83,9 +83,10 @@
     <div class="row">
          
         
+
 <section>
 	<div class="span12">
-        <form class="login-form" action="/index.php?s=/Home/User/login.html" method="post">
+        <form class="login-form" action="/index.php?s=/Home/User/register.html" method="post">
           <div class="control-group">
             <label class="control-label" for="inputEmail">用户名</label>
             <div class="controls">
@@ -96,6 +97,18 @@
             <label class="control-label" for="inputPassword">密码</label>
             <div class="controls">
               <input type="password" id="inputPassword"  class="span3" placeholder="请输入密码"  errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputPassword">确认密码</label>
+            <div class="controls">
+              <input type="password" id="inputPassword" class="span3" placeholder="请再次输入密码" recheck="password" errormsg="您两次输入的密码不一致" nullmsg="请填确认密码" datatype="*" name="repassword">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputEmail">邮箱</label>
+            <div class="controls">
+              <input type="text" id="inputEmail" class="span3" placeholder="请输入电子邮件"  ajaxurl="/member/checkUserEmailUnique.html" errormsg="请填写正确格式的邮箱" nullmsg="请填写邮箱" datatype="e" value="" name="email">
             </div>
           </div>
           <div class="control-group">
@@ -113,15 +126,13 @@
           </div>
           <div class="control-group">
             <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox"> 自动登陆
-              </label>
-              <button type="submit" class="btn">登 陆</button>
+              <button type="submit" class="btn">注 册</button>
             </div>
           </div>
         </form>
 	</div>
 </section>
+
 
     </div>
 </div>
@@ -159,7 +170,6 @@
 </script>
 
 	<script type="text/javascript">
-
     	$(document)
 	    	.ajaxStart(function(){
 	    		$("button:submit").addClass("log-in").attr("disabled", true);

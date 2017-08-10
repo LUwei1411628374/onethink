@@ -22,6 +22,10 @@
                 <th>单号</th>
                 <th>报修人</th>
                 <th>报修人电话</th>
+                <th>地址</th>
+                <th>问题</th>
+                <th>状态</th>
+                <th>报修时间</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -34,6 +38,10 @@
                         <td>{$manage.numbers}</a></td>
                         <td>{$manage.name}</td>
                         <td>{$manage.tel}</td>
+                        <td>{$manage.address}</td>
+                        <td>{$manage.problem}</td>
+                        <td>{$manage.status}</td>
+                        <td>{$manage.create_time|time_format}</td>
                         <td>
                             <a title="编辑" href="{:U('edit?id='.$manage['id'])}">编辑</a>
                             <a class="confirm ajax-get" title="删除" href="{:U('del?id='.$manage['id'])}">删除</a>

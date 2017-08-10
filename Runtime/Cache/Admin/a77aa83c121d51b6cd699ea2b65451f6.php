@@ -86,54 +86,67 @@
 
             
     <div class="main-title">
-        <h2>导航管理</h2>
+        <h2><?php echo isset($info['id'])?'编辑':'新增';?>后台菜单</h2>
     </div>
-
-    <div class="cf">
-        <a class="btn" href="<?php echo U('add' );?>">新 增</a>
-        <a class="btn" href="javascript:;">删 除</a>
-        <button class="btn list_sort" url="<?php echo U('sort',array('pid'=>I('get.pid',0)),'');?>">排序</button>
-    </div>
-
-    <div class="data-table table-striped">
-        <table>
-            <thead>
-            <tr>
-                <th class="row-selected">
-                    <input class="checkbox check-all" type="checkbox">
-                </th>
-                <th>ID</th>
-                <th>单号</th>
-                <th>报修人</th>
-                <th>报修人电话</th>
-                <th>地址</th>
-                <th>问题</th>
-                <th>状态</th>
-                <th>报修时间</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php if(!empty($index)): if(is_array($index)): $i = 0; $__LIST__ = $index;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$manage): $mod = ($i % 2 );++$i;?><tr>
-                        <td><input class="ids row-selected" type="checkbox" name="" id="" value="<?php echo ($manage['id']); ?>"> </td>
-                        <td><?php echo ($manage["id"]); ?></td>
-                        <td><?php echo ($manage["numbers"]); ?></a></td>
-                        <td><?php echo ($manage["name"]); ?></td>
-                        <td><?php echo ($manage["tel"]); ?></td>
-                        <td><?php echo ($manage["address"]); ?></td>
-                        <td><?php echo ($manage["problem"]); ?></td>
-                        <td><?php echo ($manage["status"]); ?></td>
-                        <td><?php echo (time_format($manage["create_time"])); ?></td>
-                        <td>
-                            <a title="编辑" href="<?php echo U('edit?id='.$manage['id']);?>">编辑</a>
-                            <a class="confirm ajax-get" title="删除" href="<?php echo U('del?id='.$manage['id']);?>">删除</a>
-                        </td>
-                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-                <?php else: ?>
-                <td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>
-            </tbody>
-        </table>
-    </div>
+    <form action="<?php echo U();?>" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">标题<span class="check-tips">（用于后台显示的配置标题）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="title" value="<?php echo ((isset($info["title"]) && ($info["title"] !== ""))?($info["title"]):''); ?>">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">排序<span class="check-tips">（用于分组显示的顺序）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-small" name="sort" value="<?php echo ((isset($info["sort"]) && ($info["sort"] !== ""))?($info["sort"]):0); ?>">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">链接<span class="check-tips">（U函数解析的URL或者外链）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="url" value="<?php echo ((isset($info["url"]) && ($info["url"] !== ""))?($info["url"]):''); ?>">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">上级菜单<span class="check-tips">（所属的上级菜单）</span></label>
+            <div class="controls">
+                <select name="pid">
+                    <?php if(is_array($Menus)): $i = 0; $__LIST__ = $Menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["id"]); ?>"><?php echo ($menu["title_show"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">分组<span class="check-tips">（用于左侧分组二级菜单）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="group" value="<?php echo ((isset($info["group"]) && ($info["group"] !== ""))?($info["group"]):''); ?>">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">是否隐藏<span class="check-tips"></span></label>
+            <div class="controls">
+                <label class="radio"><input type="radio" name="hide" value="1">是</label>
+                <label class="radio"><input type="radio" name="hide" value="0">否</label>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">仅开发者模式可见<span class="check-tips"></span></label>
+            <div class="controls">
+                <label class="radio"><input type="radio" name="is_dev" value="1">是</label>
+                <label class="radio"><input type="radio" name="is_dev" value="0">否</label>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">说明<span class="check-tips">（菜单详细说明）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="tip" value="<?php echo ((isset($info["tip"]) && ($info["tip"] !== ""))?($info["tip"]):''); ?>">
+            </div>
+        </div>
+        <div class="form-item">
+            <input type="hidden" name="id" value="<?php echo ((isset($info["id"]) && ($info["id"] !== ""))?($info["id"]):''); ?>">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
 
         </div>
         <div class="cont-ft">
@@ -229,25 +242,11 @@
     </script>
     
     <script type="text/javascript">
-        $(function() {
-            //点击排序
-            $('.list_sort').click(function(){
-                var url = $(this).attr('url');
-                var ids = $('.ids:checked');
-                var param = '';
-                if(ids.length > 0){
-                    var str = new Array();
-                    ids.each(function(){
-                        str.push($(this).val());
-                    });
-                    param = str.join(',');
-                }
-
-                if(url != undefined && url != ''){
-                    window.location.href = url + '/ids/' + param;
-                }
-            });
-        });
+        Think.setValue("pid", <?php echo ((isset($info["pid"]) && ($info["pid"] !== ""))?($info["pid"]): 0); ?>);
+        Think.setValue("hide", <?php echo ((isset($info["hide"]) && ($info["hide"] !== ""))?($info["hide"]): 0); ?>);
+        Think.setValue("is_dev", <?php echo ((isset($info["is_dev"]) && ($info["is_dev"] !== ""))?($info["is_dev"]): 0); ?>);
+        //导航高亮
+        highlight_subnav('<?php echo U('index');?>');
     </script>
 
 </body>

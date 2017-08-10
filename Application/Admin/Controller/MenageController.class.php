@@ -9,10 +9,10 @@
 namespace Admin\Controller;
 
 
-class ManageController extends AdminController
+class MenageController extends AdminController
 {
     public function index(){
-        $lists = M('Manage')->select();
+        $lists = M('Menage')->select();
         $this->assign('index', $lists);
         //$this->meta_title = '报修管理';
         $this->display();
@@ -20,20 +20,23 @@ class ManageController extends AdminController
 
     public function add(){
         if(IS_POST){
-            $Manage = D('Manage');
-            $data = $Manage->create();
+            $Menage = D('Menage');
+            $data = $Menage->create();
 //            var_dump($data);exit;
             if($data){
-                $id = $Manage->add();
+                $Menage->create_time = time();
+                $Menage->status = 1;
+                $Menage->numbers = uniqid(date("Ymd"));
+                $id = $Menage->add();
                 if($id){
                     $this->success('新增成功', U('index'));
                     //记录行为
-                    action_log('update_manage', 'manage', $id, UID);
+                    action_log('update_menage', 'menage', $id, UID);
                 } else {
                     $this->error('新增失败');
                 }
             } else {
-                $this->error($Manage->getError());
+                $this->error($Menage->getError());
             }
         } else {
             $pid = i('get.pid', 0);
@@ -50,27 +53,26 @@ class ManageController extends AdminController
         }
     }
 
-
     public function edit($id = 0){
         if(IS_POST){
-            $Manage = D('Manage');
-            $data = $Manage->create();
+            $Menage = D('Menage');
+            $data = $Menage->create();
             if($data){
-                if($Manage->save()){
+                if($Menage->save()){
                     //记录行为
-                    action_log('update_manage', 'manage', $data['id'], UID);
+                    action_log('update_menage', 'menage', $data['id'], UID);
                     $this->success('编辑成功', U('index'));
                 } else {
                     $this->error('编辑失败');
                 }
 
             } else {
-                $this->error($Manage->getError());
+                $this->error($Menage->getError());
             }
         } else {
             $info = array();
             /* 获取数据 */
-            $info = M('Manage')->find($id);
+            $info = M('Menage')->find($id);
 
             if(false === $info){
                 $this->error('获取配置信息错误');
@@ -79,7 +81,7 @@ class ManageController extends AdminController
             $pid = i('get.pid', 0);
             //获取父导航
             if(!empty($pid)){
-                $parent = M('Manage')->where(array('id'=>$pid))->field('title')->find();
+                $parent = M('Menage')->where(array('id'=>$pid))->field('title')->find();
                 $this->assign('parent', $parent);
             }
 
@@ -99,9 +101,9 @@ class ManageController extends AdminController
         }
 
         $map = array('id' => array('in', $id) );
-        if(M('Manage')->where($map)->delete()){
+        if(M('Menage')->where($map)->delete()){
             //记录行为
-            action_log('update_manage', 'manage', $id, UID);
+            action_log('update_menage', 'menage', $id, UID);
             $this->success('删除成功');
         } else {
             $this->error('删除失败！');

@@ -7,7 +7,10 @@
 <link href="/Public/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="/Public/static/bootstrap/css/docs.css" rel="stylesheet">
 <link href="/Public/static/bootstrap/css/onethink.css" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css" href="/Public/static/login/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/login/css/demo.css" />
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="/Public/static/login/css/component.css" />
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="/Public/static/bootstrap/js/html5shiv.js"></script>
@@ -21,6 +24,10 @@
 <script type="text/javascript" src="/Public/static/bootstrap/js/bootstrap.min.js"></script>
 <!--<![endif]-->
 <!-- 页面header钩子，一般用于加载插件CSS文件和代码 -->
+<script src="/Public/static/login/js/TweenLite.min.js"></script>
+<script src="/Public/static/login/js/EasePack.min.js"></script>
+<script src="/Public/static/login/js/rAF.js"></script>
+<script src="/Public/static/login/js/demo-1.js"></script>
 <?php echo hook('pageHeader');?>
 
 </head>

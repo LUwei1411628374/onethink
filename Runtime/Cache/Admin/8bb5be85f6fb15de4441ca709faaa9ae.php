@@ -114,19 +114,19 @@
             </tr>
             </thead>
             <tbody>
-            <?php if(!empty($index)): if(is_array($index)): $i = 0; $__LIST__ = $index;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$manage): $mod = ($i % 2 );++$i;?><tr>
-                        <td><input class="ids row-selected" type="checkbox" name="" id="" value="<?php echo ($manage['id']); ?>"> </td>
-                        <td><?php echo ($manage["id"]); ?></td>
-                        <td><?php echo ($manage["numbers"]); ?></a></td>
-                        <td><?php echo ($manage["name"]); ?></td>
-                        <td><?php echo ($manage["tel"]); ?></td>
-                        <td><?php echo ($manage["address"]); ?></td>
-                        <td><?php echo ($manage["problem"]); ?></td>
-                        <td><?php echo ($manage["status"]); ?></td>
-                        <td><?php echo (time_format($manage["create_time"])); ?></td>
+            <?php if(!empty($index)): if(is_array($index)): $i = 0; $__LIST__ = $index;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menage): $mod = ($i % 2 );++$i;?><tr>
+                        <td><input class="ids row-selected" type="checkbox" name="" id="" value="<?php echo ($menage['id']); ?>"> </td>
+                        <td><?php echo ($menage["id"]); ?></td>
+                        <td><?php echo ($menage["numbers"]); ?></a></td>
+                        <td><?php echo ($menage["name"]); ?></td>
+                        <td><?php echo ($menage["tel"]); ?></td>
+                        <td><?php echo ($menage["address"]); ?></td>
+                        <td><?php echo ($menage["problem"]); ?></td>
+                        <td><?php echo ($menage[status]==1?处理中:已处理); ?></td>
+                        <td><?php echo (time_format($menage["create_time"])); ?></td>
                         <td>
-                            <a title="编辑" href="<?php echo U('edit?id='.$manage['id']);?>">编辑</a>
-                            <a class="confirm ajax-get" title="删除" href="<?php echo U('del?id='.$manage['id']);?>">删除</a>
+                            <a title="编辑" href="<?php echo U('edit?id='.$menage['id']);?>">编辑</a>
+                            <a class="confirm ajax-get" title="删除" href="<?php echo U('del?id='.$menage['id']);?>">删除</a>
                         </td>
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                 <?php else: ?>

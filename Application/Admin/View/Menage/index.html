@@ -31,20 +31,20 @@
             </thead>
             <tbody>
             <notempty name="index">
-                <volist name="index" id="manage">
+                <volist name="index" id="menage">
                     <tr>
-                        <td><input class="ids row-selected" type="checkbox" name="" id="" value="{$manage['id']}"> </td>
-                        <td>{$manage.id}</td>
-                        <td>{$manage.numbers}</a></td>
-                        <td>{$manage.name}</td>
-                        <td>{$manage.tel}</td>
-                        <td>{$manage.address}</td>
-                        <td>{$manage.problem}</td>
-                        <td>{$manage.status}</td>
-                        <td>{$manage.create_time|time_format}</td>
+                        <td><input class="ids row-selected" type="checkbox" name="" id="" value="{$menage['id']}"> </td>
+                        <td>{$menage.id}</td>
+                        <td>{$menage.numbers}</td>
+                        <td>{$menage.name}</td>
+                        <td>{$menage.tel}</td>
+                        <td>{$menage.address}</td>
+                        <td>{$menage.problem}</td>
+                        <td>{$menage[status]==1?处理中:已处理}</td>
+                        <td>{$menage.create_time|time_format}</td>
                         <td>
-                            <a title="编辑" href="{:U('edit?id='.$manage['id'])}">编辑</a>
-                            <a class="confirm ajax-get" title="删除" href="{:U('del?id='.$manage['id'])}">删除</a>
+                            <a title="编辑" href="{:U('edit?id='.$menage['id'])}">编辑</a>
+                            <a class="confirm ajax-get" title="删除" href="{:U('del?id='.$menage['id'])}">删除</a>
                         </td>
                     </tr>
                 </volist>

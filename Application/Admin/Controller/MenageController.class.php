@@ -24,8 +24,6 @@ class MenageController extends AdminController
             $data = $Menage->create();
 //            var_dump($data);exit;
             if($data){
-                $Menage->create_time = time();
-                $Menage->status = 1;
                 $Menage->numbers = uniqid(date("Ymd"));
                 $id = $Menage->add();
                 if($id){

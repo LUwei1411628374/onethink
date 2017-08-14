@@ -117,7 +117,7 @@
             <?php if(!empty($index)): if(is_array($index)): $i = 0; $__LIST__ = $index;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menage): $mod = ($i % 2 );++$i;?><tr>
                         <td><input class="ids row-selected" type="checkbox" name="" id="" value="<?php echo ($menage['id']); ?>"> </td>
                         <td><?php echo ($menage["id"]); ?></td>
-                        <td><?php echo ($menage["numbers"]); ?></a></td>
+                        <td><?php echo ($menage["numbers"]); ?></td>
                         <td><?php echo ($menage["name"]); ?></td>
                         <td><?php echo ($menage["tel"]); ?></td>
                         <td><?php echo ($menage["address"]); ?></td>

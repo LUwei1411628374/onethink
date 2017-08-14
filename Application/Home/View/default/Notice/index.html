@@ -1,0 +1,21 @@
+<extend name="Base/index"/>
+<block name="main">
+    <volist name="list" id="channel">
+        <div class="container-fluid" >
+            <div class="row noticeList">
+                <a href="{:U('detail?id='.$channel['id'])}">
+                    <div class="col-xs-2">
+                        <img class="noticeImg" src="{$channel.path}" />
+                    </div>
+                    <div class="col-xs-10">
+                        <p class="title">{$channel.title}</p>
+                        <p class="intro">{$channel.description}</p>
+                        <p class="info">浏览:{$channel.view}<span class="pull-right">{$channel.create_time|time_format}</span> </p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </volist>
+</block>
+

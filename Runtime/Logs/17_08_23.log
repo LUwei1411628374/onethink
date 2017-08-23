@@ -1,0 +1,17 @@
+[ 2017-08-23T19:19:37+08:00 ] 127.0.0.1 /index.php?s=/Home/Content/index
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.123007s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.157009s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.024002s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.025002s ]
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\phpStudy\WWW\wwwroot\vendor\symfony\http-foundation\Response.php:1266) D:\phpStudy\WWW\wwwroot\ThinkPHP\Library\Think\View.class.php 第 91 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\phpStudy\WWW\wwwroot\vendor\symfony\http-foundation\Response.php:1266) D:\phpStudy\WWW\wwwroot\ThinkPHP\Library\Think\View.class.php 第 92 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\phpStudy\WWW\wwwroot\vendor\symfony\http-foundation\Response.php:1266) D:\phpStudy\WWW\wwwroot\ThinkPHP\Library\Think\View.class.php 第 93 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.008000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008000s ]
+
